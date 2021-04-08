@@ -1,0 +1,21 @@
+{
+    "name": "nateatnts/baseapi",
+    "description": "Base API",
+    "keywords": [
+        "api"
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^4.1",
+        "yidas/yii2-bower-asset": "2.0.13.1",
+        "yiisoft/yii2": "^2.0",
+        "seld/cli-prompt": "^1.0",
+        "yiisoft/yii2-debug": "^2.1",
+        "yiisoft/yii2-gii": "^2.2",
+        "yiisoft/yii2-imagine": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "baseapi\\": "src/"
+        }
+    }
+}
