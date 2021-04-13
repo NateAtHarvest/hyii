@@ -1,8 +1,8 @@
 <?php
 
-namespace baseapi\services;
+namespace hyii\services;
 
-use BaseApi;
+use Hyii;
 use yii\base\Component;
 
 class Updates extends Component

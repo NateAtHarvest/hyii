@@ -1,9 +1,9 @@
 <?php
 
-namespace baseapi\web;
+namespace hyii\web;
 
-use BaseApi;
-use baseapi\base\ApplicationTrait;
+use Hyii;
+use hyii\base\ApplicationTrait;
 
 class Application extends \yii\web\Application
 {
@@ -14,7 +14,7 @@ class Application extends \yii\web\Application
 
     public function __construct($config = [])
     {
-        BaseApi::$app = $this;
+        Hyii::$app = $this;
         parent::__construct($config);
     }
 

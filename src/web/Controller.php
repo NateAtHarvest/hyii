@@ -1,8 +1,8 @@
 <?php
 
-namespace baseapi\web;
+namespace hyii\web;
 
-use BaseApi;
+use Hyii;
 use yii\rest\Controller as RestController;
 
 abstract class Controller extends RestController
@@ -11,7 +11,7 @@ abstract class Controller extends RestController
     public function runAction($id, $params = [])
     {
 
-        if (! BaseApi::$app->getIsInstalled())  {
+        if (! Hyii::$app->getIsInstalled())  {
 
             /**
              * TODO: JSON response that the API has not been installed

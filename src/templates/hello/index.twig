@@ -1,0 +1,17 @@
+{% extends "_layouts/default.twig" %}
+
+{% block content %}
+    <div class="pa-4">
+        <h1>{{ title }}</h1>
+
+        <p>{{ body }}</p>
+
+        <h3>Site URL</h3>
+        {{ site_url }}
+
+        <h3>Dev Mode</h3>
+        {{ devmode }}
+
+    </div>
+
+{% endblock %}

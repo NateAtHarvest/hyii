@@ -48,10 +48,12 @@ if ($devMode) {
 }
 
 require VENDOR_PATH . DIRECTORY_SEPARATOR .'yiisoft' . DIRECTORY_SEPARATOR . 'yii2' . DIRECTORY_SEPARATOR . 'Yii.php';
-require BASE_API_SRC_PATH . 'BaseApi.php';
-BaseApi::setAlias('@baseapi', BASE_API_SRC_PATH);
+require HYII_SRC_PATH . 'Hyii.php';
+
+Hyii::setAlias('@site_url', getenv('BASE_URL'));
+Hyii::setAlias('@hyii', HYII_SRC_PATH);
 $config = require CONFIG_FILE;
 
-$app = BaseApi::createObject($config);
+$app = Hyii::createObject($config);
 
 return $app;

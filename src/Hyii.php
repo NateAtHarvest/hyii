@@ -2,7 +2,7 @@
 
 use yii\helpers\VarDumper;
 
-class BaseApi extends Yii
+class Hyii extends Yii
 {
     public static $app;
 

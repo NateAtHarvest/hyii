@@ -1,8 +1,8 @@
 <?php
 
-namespace baseapi\models;
+namespace hyii\models;
 
-use BaseApi;
+use Hyii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -82,8 +82,8 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function add()
     {
-        $this->password = BaseApi::$app->getSecurity()->generatePasswordHash($this->newPassword, 13);
-        $this->authKey = BaseApi::$app->getSecurity()->generateRandomString();
+        $this->password = Hyii::$app->getSecurity()->generatePasswordHash($this->newPassword, 13);
+        $this->authKey = Hyii::$app->getSecurity()->generateRandomString();
 
         if (($this->password == '') || ($this->username == '')) {
             return false;
@@ -102,13 +102,13 @@ class User extends ActiveRecord implements IdentityInterface
     {
         if ($this->validate()) {
 
-            $updatedUser = BaseApi::$app->request->post();
+            $updatedUser = Hyii::$app->request->post();
 
             if (isset($updatedUser['password'])) {
-                $updatedUser['password'] = BaseApi::$app->getSecurity()->generatePasswordHash($updatedUser['password']);
+                $updatedUser['password'] = Hyii::$app->getSecurity()->generatePasswordHash($updatedUser['password']);
             }
 
-            $user = static::findOne(BaseApi::$app->request->post("id"));
+            $user = static::findOne(Hyii::$app->request->post("id"));
             $user->attributes = $updatedUser;
             $user->save();
             return true;

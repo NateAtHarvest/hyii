@@ -11,11 +11,12 @@
         "seld/cli-prompt": "^1.0",
         "yiisoft/yii2-debug": "^2.1",
         "yiisoft/yii2-gii": "^2.2",
-        "yiisoft/yii2-imagine": "^2.3"
+        "yiisoft/yii2-imagine": "^2.3",
+        "twig/twig": "^3.3"
     },
     "autoload": {
         "psr-4": {
-            "baseapi\\": "src/"
+            "hyii\\": "src/"
         }
     }
 }

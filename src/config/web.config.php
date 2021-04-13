@@ -4,25 +4,22 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'base-api-web',
-    'name' => "Base API",
+    'id' => 'hyii-web',
+    'name' => "HYii Web",
     'version' => '0.1',
     'basePath' => dirname(__DIR__),
-    'class' => baseapi\web\Application::class,
+    'class' => hyii\web\Application::class,
     'bootstrap' => ['log'],
-    'controllerNamespace' => 'baseapi\controllers',
+    'controllerNamespace' => 'hyii\controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
-            'class' => baseapi\web\Request::class,
+            'class' => hyii\web\Request::class,
             'enableCookieValidation' => false,
             'enableCsrfValidation' => false,
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ],
         ],
         'urlManager' => [
             'class' => yii\web\UrlManager::class,
@@ -32,14 +29,10 @@ $config = [
                 'class' => yii\web\UrlRule::class
             ],
             'rules' => [
-                '<controller>/create' => '<controller>/create',
-                '<controller>/<id:\d+>/<action:(update|delete)>' => '<controller>/<action>',
-                '<controller>/<id:\d+>' => '<controller>/view',
-                '<controller>s' => '<controller>/index',
             ]
         ],
         'user' => [
-            'identityClass' => baseapi\models\User::class,
+            'identityClass' => hyii\models\User::class,
             'enableSession' => false,
             'loginUrl' => null,
         ],
@@ -55,7 +48,7 @@ $config = [
         'db' => $db,
     ],
     'params' => $params,
-    'defaultRoute' => 'api/index'
+    'defaultRoute' => 'hello/index'
 ];
 
 if (YII_ENV_DEV) {

@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace baseapi\console\controllers;
+namespace hyii\console\controllers;
 
-use BaseApi;
-use baseapi\console\Controller;
-use baseapi\migrations\Install;
+use Hyii;
+use hyii\console\Controller;
+use hyii\migrations\Install;
 use Seld\CliPrompt\CliPrompt;
 use yii\console\ExitCode;
 use yii\db\config;
@@ -46,13 +46,13 @@ class InstallController extends Controller
         $this->getIsDbConnectionValid();
 
         // proceed or exit depending on whether the API has been installed yet.
-        if (BaseApi::$app->getIsInstalled()) {
-            BaseApi::_console("Base API is already installed.");
+        if (Hyii::$app->getIsInstalled()) {
+            Hyii::_console("Base API is already installed.");
             return ExitCode::OK;
         }
 
         $this->getDefaultUserInfo();
-        BaseApi::_console("Installing...");
+        Hyii::_console("Installing...");
 
         /**
          * Most projects will not use the base install migration
@@ -69,9 +69,9 @@ class InstallController extends Controller
             $result = $installMigration->safeUp();
 
             if ($result) {
-                BaseApi::_console("Installation Done! ");
+                Hyii::_console("Installation Done! ");
             } else {
-                BaseApi::_console("Installation Failed!");
+                Hyii::_console("Installation Failed!");
             }
             return ExitCode::OK;
         }
@@ -86,9 +86,9 @@ class InstallController extends Controller
         $result = $uninstallMigration->safeDown();
 
         if ($result) {
-            BaseApi::_console("Removal Done! ");
+            Hyii::_console("Removal Done! ");
         } else {
-            BaseApi::_console("Removal Failed!");
+            Hyii::_console("Removal Failed!");
         }
     }
 
@@ -98,10 +98,10 @@ class InstallController extends Controller
     public function getIsDbConnectionValid()
     {
         try {
-            BaseApi::$app->db->open();
+            Hyii::$app->db->open();
             $this->isWorkingDbConnection = true;
         } catch (yii\db\Exception $e) {
-            BaseApi::_console("There was a problem connecting to the database.");
+            Hyii::_console("There was a problem connecting to the database.");
             $this->isWorkingDbConnection = true;
         }
     }

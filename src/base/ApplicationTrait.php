@@ -1,8 +1,8 @@
 <?php
 
-namespace baseapi\base;
+namespace hyii\base;
 
-use BaseApi;
+use Hyii;
 use yii\db\config;
 
 
@@ -24,7 +24,7 @@ trait ApplicationTrait
             return $this->isApiInstalled;
         }
 
-        $infoTable = BaseApi::$app->db->schema->getTableSchema("{{%info}}");
+        $infoTable = Hyii::$app->db->schema->getTableSchema("{{%info}}");
 
         if ($infoTable === null) {
             $this->isApiInstalled = false;

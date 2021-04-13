@@ -1,8 +1,8 @@
 <?php
 
-namespace BaseApi\migrations;
+namespace hyii\migrations;
 
-use baseapi\models\User;
+use hyii\models\User;
 use yii\db\Migration;
 
 class Install extends Migration

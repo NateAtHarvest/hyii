@@ -1,13 +1,12 @@
 <?php
 
-namespace baseapi\helpers;
+namespace hyii\helpers;
 
-use baseapi\helpers\UserHelper as User;
+use hyii\helpers\UserHelper as User;
 use yii\helpers\ArrayHelper;
-use BaseApi;
+use Hyii;
 
-Class BaseApiHelper {
-
+Class HyiiHelper {
     /**
      * Checking to make sure a user is an admin is a common task.  This reduces and modularizes code.
      */
@@ -69,7 +68,7 @@ Class BaseApiHelper {
      */
     public static function getPost()
     {
-        return BaseApi::$app->request->post();
+        return Hyii::$app->request->post();
     }
 
     /**
@@ -159,7 +158,27 @@ Class BaseApiHelper {
         return (new \yii\db\Query());
     }
 
+    /**
+     * Checks to see if a post exists based on the specified key existing
+     *
+     * @param $key
+     * @return bool
+     */
+    public static function isPost($key) : bool
+    {
+        $post = static::getPost();
+        if (isset($post[$key])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public static function getUser()
+    {
+        return Hyii::$app->user->identity;
+    }
+
 }
-
-
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace baseapi\web;
+namespace hyii\web;
 
-use BaseApi;
+use Hyii;
 
 class Request extends \yii\web\Request
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace baseapi\controllers;
+namespace hyii\controllers;
 
-use BaseApi;
-use baseapi\web\Controller;
-use baseapi\models\LoginForm;
+use Hyii;
+use hyii\web\Controller;
+use hyii\models\LoginForm;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
 
@@ -38,9 +38,9 @@ class AccessController extends Controller
         $model = new LoginForm();
 
         // The $model->load method second parameter is blank because we are not passing in a form name
-        if ($model->load(BaseApi::$app->request->post(),'') && $model->login()) {
+        if ($model->load(Hyii::$app->request->post(),'') && $model->login()) {
 
-            $user = BaseApi::$app->user->identity;
+            $user = Hyii::$app->user->identity;
 
             /**
              * Prep return data

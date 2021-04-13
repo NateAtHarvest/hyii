@@ -1,0 +1,139 @@
+$f-sans: 'Work Sans';
+$f-serif: 'Georgia', serif;
+
+@import  '~foundation-sites/scss/util/util';
+
+$global-font-size: 20px;
+$global-width: rem-calc(1400);
+$global-lineheight: 1.6;
+$foundation-palette: (
+'primary': #494949,
+'secondary': #50604e,
+'success': #3adb76,
+'warning': #ffae00,
+'alert': #ec5840,
+'white': #fff,
+'twitter': #00aced,
+'facebook': #3b5998,
+'pinterest': #cb2027,
+'linkedin': #007bb6,
+'youtube': #bb0000,
+'instagram': #517fa4,
+);
+@include add-foundation-colors;
+
+@function color($key) {
+    @if map-has-key($foundation-palette, $key) {
+        @return map-get($foundation-palette, $key);
+    }
+    @warn 'Unknown `#{$key}` in $foundation-palette.';
+    @return null;
+}
+
+$body-font-family: $f-sans;
+$global-radius: 0px;
+
+$breakpoints: (
+small: 0,
+medium: 768px,
+           large: 1280px,
+);
+
+$breakpoint-classes: (small medium large);
+
+$header-font-weight: normal;
+$header-font-style: normal;
+$header-font-family: $f-sans;
+$header-styles: (
+small: (
+'h1': ('font-size': 42),
+'h2': ('font-size': 38),
+'h3': ('font-size': 37),
+'h4': ('font-size': 35),
+'h5': ('font-size': 31),
+'h6': ('font-size': 31)
+),
+medium: (
+'h1': ('font-size': 38),
+'h2': ('font-size': 35),
+'h3': ('font-size': 28),
+'h4': ('font-size': 26),
+'h5': ('font-size': 21),
+'h6': ('font-size': 21)
+),
+large: (
+'h1': ('font-size': 66),
+'h2': ('font-size': 50),
+'h3': ('font-size': 31),
+'h4': ('font-size': 28),
+'h5': ('font-size': 21),
+'h6': ('font-size': 21)
+)
+);
+$header-color: color(primary);
+$header-lineheight: 1.12;
+$header-margin-bottom: 0.5rem;
+$paragraph-lineheight: 1.6;
+$paragraph-margin-bottom: 1.6rem;
+$small-font-size: .6rem;
+$list-side-margin: $paragraph-margin-bottom * 1.5;
+$blockquote-border: 2px solid color('primary');
+$blockquote-color: scale-color(color('primary'), $lightness: -20%);
+$blockquote-padding: $paragraph-margin-bottom;
+$cite-font-size: rem-calc(16);
+$accordion-title-font-size: 1.1rem;
+$accordion-item-background-hover: color('white');
+$button-hollow-border-width: 3px;
+$button-background-hover-lightness: -8%;
+$button-hollow-hover-lightness: -8%;
+$buttongroup-spacing: 4px;
+$callout-background: color('primary');
+$callout-background-fade: 93%;
+$callout-border: 4px solid color('primary');
+$callout-radius: 0px;
+$callout-padding: $paragraph-margin-bottom;
+$callout-margin: 0 0 $paragraph-margin-bottom 0;
+$offcanvas-background: color('white');
+$pagination-mobile-items: true;
+$responsive-embed-margin-bottom: $paragraph-margin-bottom;
+$table-head-background: transparent;
+$table-border: none;
+$table-is-striped: false;
+$thumbnail-border: 8px solid color('white');
+$thumbnail-shadow-hover: 0 0 6px 1px rgba(#000, 0.5);
+$grid-container: rem-calc(1280);
+$grid-container-padding: 0;
+$grid-columns: 24;
+
+@import '~foundation-sites/scss/foundation';
+@include foundation-everything;
+@tailwind components;
+@tailwind utilities;
+
+svg{
+    fill: currentColor;
+}
+.icon{
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+}
+
+body {
+    background-color: #e4edf6;
+}
+a:focus {
+    outline: none !important;
+}
+
+img:focus {
+    outline: none !important;
+}
+
+div:focus {
+    outline: none !important;
+}
+
+a:link, a:visited {
+    color: inherit;
+}

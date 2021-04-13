@@ -1,8 +1,8 @@
 <?php
 
-namespace baseapi\helpers;
+namespace hyii\helpers;
 
-use BaseApi;
+use Hyii;
 
 Class UserHelper {
 
@@ -11,7 +11,7 @@ Class UserHelper {
      */
     public static function isAdmin() {
 
-        if (BaseApi::$app->user->identity->admin != "N") {
+        if (Hyii::$app->user->identity->admin != "N") {
             return true;
         } else {
             return false;
@@ -25,7 +25,7 @@ Class UserHelper {
      */
     public static function userId()
     {
-        return BaseApi::$app->user->identity->id;
+        return Hyii::$app->user->identity->id;
     }
 
 }

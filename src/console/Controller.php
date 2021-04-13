@@ -1,6 +1,6 @@
 <?php
 
-namespace baseapi\console;
+namespace hyii\console;
 
 use yii\console\Controller as YiiController;
 

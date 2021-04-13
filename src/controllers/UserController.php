@@ -1,10 +1,10 @@
 <?php
 
-namespace baseapi\controllers;
+namespace hyii\controllers;
 
-use BaseApi;
+use Hyii;
 use yii\filters\auth\HttpBearerAuth;
-use baseapi\models\User;
+use hyii\models\User;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
 
@@ -46,7 +46,7 @@ class UserController extends \yii\web\Controller
 
     public function actionUpdate() {
         $user = new User();
-        if ($user->load(BaseApi::$app->request->post(), '') && $user->updateUser()) {
+        if ($user->load(Hyii::$app->request->post(), '') && $user->updateUser()) {
             return ["success" => true];
         } else {
             return ["success" => false];
@@ -58,7 +58,7 @@ class UserController extends \yii\web\Controller
     {
         $user = new User();
 
-        if ($user->load(BaseApi::$app->request->post(), '') && $user->add()) {
+        if ($user->load(Hyii::$app->request->post(), '') && $user->add()) {
             return ["success" => true];
         } else {
             return ["success" => false];
@@ -69,7 +69,7 @@ class UserController extends \yii\web\Controller
     public function actionCheckUsername()
     {
         $bUsernameExists = User::find()
-            ->where(["username" => BaseApi::$app->request->post("username", '')])
+            ->where(["username" => Hyii::$app->request->post("username", '')])
             ->count();
 
         if ($bUsernameExists > 0) {

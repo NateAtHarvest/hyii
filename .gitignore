@@ -1,5 +1,5 @@
 .idea
 /.env
 vendor/
-
+/node_modules
 /src/runtime/

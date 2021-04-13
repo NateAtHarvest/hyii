@@ -1,8 +1,8 @@
 <?php
 
-namespace baseapi\models;
+namespace hyii\models;
 
-use BaseApi;
+use Hyii;
 use yii\base\Model;
 use yii\debug\models\search\Base;
 
@@ -33,7 +33,7 @@ class LoginForm extends Model
 
     public function validatePassword($password, $hash)
     {
-        return BaseApi::$app->getSecurity()->validatePassword($password, $hash);
+        return Hyii::$app->getSecurity()->validatePassword($password, $hash);
     }
 
     /**
@@ -50,7 +50,7 @@ class LoginForm extends Model
             if ($user) {
                 if ($this->validatePassword($this->password, $user->password)) {
                     $this->_user = $user;
-                    BaseApi::$app->user->login($user);
+                    Hyii::$app->user->login($user);
                     return true;
                 } else {
                     return false;
