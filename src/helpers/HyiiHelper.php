@@ -180,5 +180,13 @@ Class HyiiHelper {
         return Hyii::$app->user->identity;
     }
 
+    public static function getSystemStateId()
+    {
+        return static::query()
+            ->select("*")
+            ->from("{{%info}}")
+            ->one();
+    }
+
 }
 
