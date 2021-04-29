@@ -180,12 +180,19 @@ Class HyiiHelper {
         return Hyii::$app->user->identity;
     }
 
+    /**
+     * Finds the single row in the info table and returns the id of that row
+     * 
+     * @return int
+     */
     public static function getSystemStateId()
     {
-        return static::query()
+        $info =  static::query()
             ->select("*")
             ->from("{{%info}}")
             ->one();
+
+        return $info['id'];
     }
 
 }
