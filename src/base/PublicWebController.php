@@ -10,7 +10,7 @@ class PublicWebController extends YiiWebController {
 
     private $twig;
 
-    private $data = [];
+    protected $data = [];
 
     /**
      * Checks to see if this has been set to app to use templates from the templates folder at the root of the project.
