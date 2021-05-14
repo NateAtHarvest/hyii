@@ -182,7 +182,7 @@ Class HyiiHelper {
 
     /**
      * Finds the single row in the info table and returns the id of that row
-     * 
+     *
      * @return int
      */
     public static function getSystemStateId()

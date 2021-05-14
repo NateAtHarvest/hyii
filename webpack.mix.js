@@ -56,7 +56,7 @@ mix
                         content: [
                             "templates/**/*.html",
                             "templates/**/*.twig",
-                            "src/js/theme.js"
+                            "mix/js/theme.js"
                         ],
                         extractors: [
                             {
