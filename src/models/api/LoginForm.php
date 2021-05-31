@@ -1,10 +1,10 @@
 <?php
 
-namespace hyii\models;
+namespace hyii\models\api;
 
 use Hyii;
+use hyii\helpers\HyiiHelper;
 use yii\base\Model;
-use yii\debug\models\search\Base;
 
 /**
  * LoginForm is the model behind the login form.
@@ -43,9 +43,22 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            $user = User::find()
-                ->where(['username' => $this->username])
-                ->one();
+
+            if (getenv('API_LOGIN_ADMIN_ONLY') == 'Y') {
+
+                $user = User::find()
+                    ->where(['username' => $this->username])
+                    ->andWhere(['active' => 'Y'])
+                    ->andWhere(['trashed' => 'N'])
+                    ->andWhere("admin <> 'N'")
+                    ->one();
+            } else {
+                $user = User::find()
+                    ->where(['username' => $this->username])
+                    ->andWhere(['active' => 'Y'])
+                    ->andWhere(['trashed' => 'N'])
+                    ->one();
+            }
 
             if ($user) {
                 if ($this->validatePassword($this->password, $user->password)) {

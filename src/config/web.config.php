@@ -29,10 +29,11 @@ $config = [
                 'class' => yii\web\UrlRule::class
             ],
             'rules' => [
+                'api/<controller>/<action>/<id:\d+>' => 'api/<controller>/<action>',
             ]
         ],
         'user' => [
-            'identityClass' => hyii\models\User::class,
+            'identityClass' => hyii\models\api\User::class,
             'enableSession' => false,
             'loginUrl' => null,
         ],

@@ -195,5 +195,52 @@ Class HyiiHelper {
         return $info['id'];
     }
 
+    /**
+     * Finds the general section in the sections table and returns the id of that row
+     *
+     * @return int
+     */
+    public static function getGeneralSectionId()
+    {
+        $generalSection =  static::query()
+            ->select("*")
+            ->from("{{%sections}}")
+            ->one();
+
+        return $generalSection['id'];
+    }
+
+    public static function isUserFunctionalityInstalled(): bool
+    {
+        $infoId = static::getSystemStateId();
+        $info = static::query()
+            ->select("*")
+            ->from("{{%info}}")
+            ->where("id = $infoId")
+            ->one();
+
+        if ($info["userManagement"] == 'Y') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function isBlogFunctionalityInstalled(): bool
+    {
+        $infoId = static::getSystemStateId();
+        $info = static::query()
+            ->select("*")
+            ->from("{{%info}}")
+            ->where("id = $infoId")
+            ->one();
+
+        if ($info["blog"] == 'Y') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 

@@ -3,3 +3,4 @@
 vendor/
 /node_modules
 /src/runtime/
+/src/admin_panel/node_modules

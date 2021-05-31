@@ -55,6 +55,8 @@ class Install extends Migration
             'dateUpdated' => $this->timestamp()->defaultExpression("CURRENT_TIMESTAMP"),
             'currentDataState' => $this->bigInteger(),
             'pendingDataState' => $this->bigInteger(),
+            'userManagement' => "ENUM('Y','N') DEFAULT 'N'",
+            'blog' => "ENUM('Y','N') DEFAULT 'N'",
         ]);
 
         $info = [

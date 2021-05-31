@@ -1,6 +1,6 @@
 <?php
 
-namespace hyii\models;
+namespace hyii\models\api;
 
 use Hyii;
 use yii\db\ActiveRecord;
@@ -29,6 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['admin','default', 'value' => 'N'],
             ['password','default', 'value' => ''],
             ['username','default', 'value' => ''],
+            ['active','default', 'value' => ''],
         ];
     }
 
@@ -67,7 +68,21 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key;
+        /**
+         * TODO: research what to do about this.  This was changed with Yii 2.0.40 - here are the notes from the
+         * change log
+         *
+         * The methods `getAuthKey()` and `validateAuthKey()` of `yii\web\IdentityInterface` are now also used to validate active
+        sessions (previously these methods were only used for cookie-based login). If your identity class does not properly
+        implement these methods yet, you should update it accordingly (an example can be found in the guide under
+        `Security` -> `Authentication`). Alternatively, you can simply return `null` in the `getAuthKey()` method to keep
+        the old behavior (that is, no validation of active sessions). Applications that change the underlying `authKey` of
+        an authenticated identity, should now call `yii\web\User::switchIdentity()`, `yii\web\User::login()`
+        or `yii\web\User::logout()` to recreate the active session with the new `authKey`.
+
+         *
+         */
+        return null;
     }
 
     /**
@@ -82,10 +97,11 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function add()
     {
-        $this->password = Hyii::$app->getSecurity()->generatePasswordHash($this->newPassword, 13);
+        $this->password = Hyii::$app->getSecurity()->generatePasswordHash($this->password, 13);
         $this->authKey = Hyii::$app->getSecurity()->generateRandomString();
+        $this->active = 'Y';
 
-        if (($this->password == '') || ($this->username == '')) {
+        if (($this->password == '') || ($this->email == '')) {
             return false;
         }
 
@@ -124,7 +140,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function getUsers() {
         return static::find()
-            ->select(['id', 'firstName','lastName', 'username', 'email', 'admin'])
+            ->select(['id', 'firstName','lastName', 'username', 'email', 'admin','active'])
             ->all();
     }
 }
