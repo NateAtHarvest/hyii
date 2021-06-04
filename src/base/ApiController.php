@@ -34,9 +34,11 @@ class ApiController extends Controller {
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::class,
         ];
+        /*
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::class,
         ];
+        */
         return $behaviors;
     }
 }

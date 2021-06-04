@@ -50,6 +50,28 @@ if ($devMode) {
 require VENDOR_PATH . DIRECTORY_SEPARATOR .'yiisoft' . DIRECTORY_SEPARATOR . 'yii2' . DIRECTORY_SEPARATOR . 'Yii.php';
 require HYII_SRC_PATH . 'Hyii.php';
 
+
+/**
+ * Prepare the asset folders
+ */
+// public
+$publicAssetFolderPath = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . getenv("PUBLIC_FILES_FOLDER") . DIRECTORY_SEPARATOR;
+if (getenv("PUBLIC_FILES_FOLDER") != "") {
+    if (file_exists($publicAssetFolderPath) !== true) {
+        mkdir($publicAssetFolderPath);
+    }
+    Hyii::setAlias('@public_asset_folder_path', $publicAssetFolderPath);
+}
+
+// secure
+$secureAssetFolderPath = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . getenv("SECURE_FILES_FOLDER") . DIRECTORY_SEPARATOR;
+if (getenv("SECURE_FILES_FOLDER") != "") {
+    if (file_exists($secureAssetFolderPath) !== true) {
+        mkdir($secureAssetFolderPath);
+    }
+    Hyii::setAlias('@secure_files_folder', $secureAssetFolderPath);
+}
+
 Hyii::setAlias('@site_url', getenv('BASE_URL'));
 Hyii::setAlias('@hyii', HYII_SRC_PATH);
 $config = require CONFIG_FILE;
