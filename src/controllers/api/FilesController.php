@@ -30,11 +30,17 @@ class FilesController extends ApiController
             // BaseApi::dd($model->imageFile);
 
             if ($model->upload()) {
-                echo "file uploaded Successfully.";
-                exit;
+                return [
+                    "success" => true
+                ];
+                //echo "file uploaded Successfully.";
+                //exit;
             } else {
-                echo "there was a problem uploading the file";
-                exit;
+                return [
+                    "success" => false
+                ];
+                //echo "there was a problem uploading the file";
+                //exit;
             }
 
         } else {
